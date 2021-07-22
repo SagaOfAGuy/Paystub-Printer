@@ -80,7 +80,7 @@ const logger = winston.createLogger({
 		try {
 			let message =  sender.sendMail({
 				from: `"Schedule Bot" ${process.env.EMAIL}`,
-				to: ['munch4ever@icloud.com'],
+				to: [''], // Email to recipient goes here
 				subject: 'Paystub Confirmation',
 				text: msg
 			});
