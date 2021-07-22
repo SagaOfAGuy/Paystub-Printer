@@ -8,20 +8,20 @@ Use the NodeJS package manager [npm](https://www.npmjs.com/) to install dependen
 
 ```bash
 # Navigate to project root
-[user@user1 ~]$ cd Paycheck/
+[user@user1 ~]$ cd Paycheck-Printer/
 
 # Install dependencies via NPM
-[user@user1 Paycheck]$ npm install
+[user@user1 Paycheck-Printer]$ npm install
 ```
 
 ## Configure Environment Variables
 Follow steps below to set environment variables needed for application:
 ```bash
 # Create .env file
-[user@user1 Paycheck]$ touch .env
+[user@user1 Paycheck-Printer]$ touch .env
 
 # With text editor, edit .env file and fill in values for environment variables
-[user@user1 Paycheck]$ vi .env
+[user@user1 Paycheck-Printer]$ vi .env
 
 K_USERNAME=yourusername
 K_PASSWORD=yourpassword
@@ -33,18 +33,7 @@ EMAIL_PASS=emailapppassword
 PRINTER=printername
 ~                                                                                                                           
 ~                                                                                                                           
-~                                                                                                                           
-~                                                                                                                           
-~                                                                                                                           
-~                                                                                                                           
-~                                                                                                                           
-~                                                                                                                           
-~                                                                                                                           
-~                                                                                                                           
-~                                                                                                                           
-~                                                                                                                           
-~                                                                                                       
-~                                                                                                                           
+~                                                                                                                                                                                                                                        
 ".env" [readonly] 9L, 332B     
 ```
 After filling in the environmental variables, save the .env file
@@ -53,20 +42,20 @@ After filling in the environmental variables, save the .env file
 Run as a standalone script
 
 ```bash
-[user@user1 Paycheck]$ node Paystub.js
+[user@user1 Paycheck-Printer]$ node Paystub.js
 ```
 
 ## Usage as a Service
 Run as a service in the background
 ```bash
 # Make sure LoadService.sh has executable permissions
-[user@user1 Paycheck]$ chmod u+x LoadService.sh
+[user@user1 Paycheck-Printer]$ chmod u+x LoadService.sh
 
 # Execute script
-[user@user1 Paycheck]$ sh ./LoadService.sh 
+[user@user1 Paycheck-Printer]$ sh ./LoadService.sh 
 
 # Confirm NodeJS service is working in background
-[user@user1 Paycheck]$ sudo systemctl status Paystub
+[user@user1 Paycheck-Printer]$ sudo systemctl status Paystub
 
 # Example output 
 ● Paystub.service - Automates Paystub retrieval and Paystub Printing
