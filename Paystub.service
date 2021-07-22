@@ -4,7 +4,9 @@ after=network-online.target
 
 [Service]
 Restart=on-failure
+# Set working directory to custom directory
 WorkingDirectory=/opt/node-apps/Paycheck-Printer
+# Set ExecStart directory to custom directory
 ExecStart=/usr/local/bin/node /opt/node-apps/Paycheck-Printer/Paystub.js
 
 [Install]
