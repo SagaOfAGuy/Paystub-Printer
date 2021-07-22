@@ -1,0 +1,11 @@
+[Unit]
+Description=Automates Paystub retrieval and Paystub Printing
+after=network-online.target
+
+[Service]
+Restart=on-failure
+WorkingDirectory=/opt/node-apps/Paycheck-Printer
+ExecStart=/usr/local/bin/node /opt/node-apps/Paycheck-Printer/Paystub.js
+
+[Install]
+WantedBy=multi-user.target

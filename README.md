@@ -1,57 +1,89 @@
-# SecureWeb-node
+# SecureWEB Paycheck Printing Utility
 
-SecureWeb-node is a nodeJS version of the SecureWeb-Kroger utility. Allows for one to retrieve, capture, and print work schedules and paystubs
+NodeJS application that screenshots and prints out Paycheck every week providing user has a valid SecureWEB account
 
 ## Installation
 
-Navigate to the project folder 
-```
-cd SecureWeb-node
-```
-Use the package manager [npm](https://www.npmjs.com/get-npm) to install the dependencies found within the package.json file. Additionally, make sure [node](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) is installed as well. 
+Use the NodeJS package manager [npm](https://www.npmjs.com/) to install dependencies.
 
 ```bash
-npm install
+# Navigate to project root
+[user@user1 ~]$ cd Paycheck/
+
+# Install dependencies via NPM
+[user@user1 Paycheck]$ npm install
 ```
 
-## Credential Configuration
-Create an .env file inside of the project folder
-```bash 
-touch creds.env
-```
-Use your favorite text editor to enter credentials within .env file
-```bash 
-vi creds.env
-```
-
-Inside of the file, create environment variables and set them equal to your login credentials, URL, etc. 
-
-```bash 
-# These variables houses links that the selenium browser will navigate to
-HR_LINK=https://yourhrlink
-PAYSTUB_LINK=https://yourpaystublink
-CALENDAR_LINK=https://yourcalendarlink
-
-# Environmental Variable for port to host scraped HTML
-PORT=yourport#
-
-# Environmental Variables for credentials
-USERNAME=YourUsername
-PASSWORD=YourPassword
-```
-## Printer Configuration
-Locate the Paystub.sh file and edit the Printer variable to the name of your personal printer
+## Configure Environment Variables
+Follow steps below to set environment variables needed for application:
 ```bash
-PRINTER="printernamegoeshere"
+# Create .env file
+[user@user1 Paycheck]$ touch .env
+
+# With text editor, edit .env file and fill in values for environment variables
+[user@user1 Paycheck]$ vi .env
+
+K_USERNAME=yourusername
+K_PASSWORD=yourpassword
+HR_LINK=hrlink
+PAYSTUB_LINK=paystublink
+CALENDAR_LINK=calendarlink
+EMAIL=emailaddress
+EMAIL_PASS=emailapppassword
+PRINTER=printername
+~                                                                                                                           
+~                                                                                                                           
+~                                                                                                                           
+~                                                                                                                           
+~                                                                                                                           
+~                                                                                                                           
+~                                                                                                                           
+~                                                                                                                           
+~                                                                                                                           
+~                                                                                                                           
+~                                                                                                                           
+~                                                                                                                           
+~                                                                                                       
+~                                                                                                                           
+".env" [readonly] 9L, 332B     
 ```
-## Usage
+After filling in the environmental variables, save the .env file
+
+## Standalone Usage
+Run as a standalone script
 
 ```bash
-# Run this script to get When2Work schedule screenshot and ICS file
-node Schedule.js
+[user@user1 Paycheck]$ node Paystub.js
 ```
 
+## Usage as a Service
+Run as a service in the background
+```bash
+# Make sure LoadService.sh has executable permissions
+[user@user1 Paycheck]$ chmod u+x LoadService.sh
 
+# Execute script
+[user@user1 Paycheck]$ sh ./LoadService.sh 
+
+# Confirm NodeJS service is working in background
+[user@user1 Paycheck]$ sudo systemctl status Paystub
+
+# Example output 
+● Paystub.service - Automates Paystub retrieval and Paystub Printing
+     Loaded: loaded (/usr/lib/systemd/system/Paystub.service; enabled; vendor preset: disabled)
+     Active: active (running) since Thu 2021-07-22 13:05:17 EDT; 11s ago
+   Main PID: 13480 (node)
+      Tasks: 11 (limit: 8773)
+     Memory: 15.5M
+        CPU: 700ms
+     CGroup: /system.slice/Paystub.service
+             └─13480 /usr/local/bin/node /opt/node-apps/Paycheck-Printer/Paystub.js
+```
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)

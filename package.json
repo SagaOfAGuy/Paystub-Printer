@@ -1,18 +1,21 @@
 {
-  "name": "secureweb-npm",
+  "name": "payprinter",
   "version": "1.0.0",
-  "description": "",
-  "main": "Schedule.js",
-  "dependencies": {
-    "dotenv": "^8.2.0",
-    "fs": "0.0.1-security",
-    "http": "0.0.1-security",
-    "puppeteer": "^5.5.0"
-  },
-  "devDependencies": {},
+  "description": "Script that prints Kroger employee paychecks every pay day",
+  "main": "Paystub.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "fs": "0.0.1-security",
+    "node-cron": "^3.0.0",
+    "node-printer": "^1.0.4",
+    "nodemailer": "^6.6.3",
+    "pdf-to-printer": "^2.0.6",
+    "puppeteer": "^10.1.0",
+    "winston": "^3.3.3"
+  }
 }
