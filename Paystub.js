@@ -1,5 +1,5 @@
 // Import Environmental Variables
-require('dotenv').config({path: '../.env'});
+require('dotenv').config({path: './.env'});
 
 const winston = require('winston');
 const puppeteer = require('puppeteer');
@@ -22,7 +22,7 @@ const logger = winston.createLogger({
 	// Scrape Paystub and save to PDF file
 	async function login(username, password) {
 			try {
-				const browser = await puppeteer.launch({headless: true});
+				const browser = await puppeteer.launch({headless: true, args:["--no-sandbox","--disable-setuid-sandbox"]});
 				const page = await browser.newPage();
 				await page.setViewport({width:1920, height:1080});
 				await page.goto(process.env.HR_LINK);
@@ -44,12 +44,11 @@ const logger = winston.createLogger({
 				await page.pdf({path: "Paystub.pdf",scale:1.0, format: "A4",landscape:true});
 				logger.info("PDF Paystub Saved");
 				await browser.close();
-				//sendAlert("Successfully printed paystub. Please check your local printer");
+				sendAlert("Successfully printed paystub. Please check your local printer");
 			}
 			catch(err) {
-				//logger.error(console.error, "Could not retrieve Paystub", err.message);
 				logger.error(err.message);
-				//sendAlert("Could not retrieve Paystub from website");
+				sendAlert("Could not retrieve Paystub from website");
 			}
 	}
 	// Prints Paystub
@@ -88,20 +87,22 @@ const logger = winston.createLogger({
 			logger.info("Email Successfully Sent");
 
 		} catch(error) {
-			logger.error("Something has gone wrong: " , error.message);
+			logger.error(error.message);
 		
 		}
 	}
 	
-		await login(process.env.K_USERNAME,process.env.K_PASSWORD);	
-  		//await print();	
+	
+ 
 	// Schedule script via node-cron
 	// Default setting is set to run 11:30 AM @ every Thursday
-	/*cron.schedule('48 14 * * 4', async() => {
+	cron.schedule('30 10 * * 4', async() => {
+
   		// Login and screenshot paystub	
 		await login(process.env.K_USERNAME,process.env.K_PASSWORD);
+
 		// Print paystub
   		await print();	
 	});
-	*/
+	
 })();
