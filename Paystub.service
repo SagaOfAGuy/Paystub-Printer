@@ -4,8 +4,8 @@ after=network-online.target
 
 [Service]
 Restart=on-failure
-WorkingDirectory=/opt/node-apps/Paycheck-Printer
-ExecStart=/usr/local/bin/node /opt/node-apps/Paycheck-Printer/Paystub.js
+WorkingDirectory=/home/vncuser/Documents/Paycheck-Printer
+ExecStart=/usr/local/bin/node /home/vncuser/Documents/Paycheck-Printer/Paystub.js
 
 [Install]
 WantedBy=multi-user.target
