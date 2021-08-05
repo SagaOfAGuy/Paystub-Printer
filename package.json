@@ -12,9 +12,7 @@
     "dotenv": "^10.0.0",
     "fs": "0.0.1-security",
     "node-cron": "^3.0.0",
-    "node-printer": "^1.0.4",
     "nodemailer": "^6.6.3",
-    "pdf-to-printer": "^2.0.6",
     "puppeteer": "^10.1.0",
     "winston": "^3.3.3"
   }
