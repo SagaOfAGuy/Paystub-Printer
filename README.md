@@ -2,6 +2,13 @@
 
 NodeJS application that screenshots and prints out Paycheck every week providing user has a valid SecureWEB account
 
+## Prerequisites
+* Have a valid SecureWEB account with working credentials
+* Have a Gmail account, and ensure than an ***app password*** is enabled on the account. This app password will be used within the `.env` file we will create, and will serve as the value for the **EMAIL_PASS** variable. 
+
+## Enabling App Passwords on Gmail Account
+* To enable an app password on a gmail account, consult these instructions [here](https://support.google.com/mail/answer/185833?hl=en-GB)
+
 ## Installation
 
 Use the NodeJS package manager [npm](https://www.npmjs.com/) to install dependencies.
